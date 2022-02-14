@@ -1,0 +1,58 @@
+.field input,
+textarea {
+  background: #ffffff;
+  border: 1.5px solid #094d76;
+  box-sizing: border-box;
+  /* border-radius: 5px; */
+  width: 100%;
+  outline: none;
+}
+
+/* random posts */
+.random-img {
+  height: 150px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* border-radius: 10px; */
+  background-size: cover;
+}
+
+.logo {
+  width: 150px;
+}
+
+.mypost-img {
+  width: 100px;
+  height: 100px;
+}
+
+.username {
+  font-size: 18px;
+}
+
+.item-gap {
+  gap: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .contact_container {
+    margin-bottom: 30px;
+  }
+
+  .post-container {
+    margin-bottom: 30px;
+  }
+
+  .username {
+    font-size: 15px;
+  }
+
+  .item-gap {
+    gap: 10px;
+  }
+
+  .logo {
+    width: 100px;
+  }
+}
