@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import api from '../axiosContact';
 
 const CreateNewPost = ({ fetchPosts }) => {
@@ -7,11 +7,13 @@ const CreateNewPost = ({ fetchPosts }) => {
     const [description, setdescription] = useState()
     const [file, setfile] = useState(null)
     const [errors, seterrors] = useState({})
+    const fileRef = useRef(null);
 
     const clearInputs = () => {
         settitle('')
         setdescription('')
         setfile(null)
+        fileRef.current = null;
     }
 
     const validate = () => {
@@ -32,7 +34,7 @@ const CreateNewPost = ({ fetchPosts }) => {
             errors.file = 'Image required'
         }
 
-        if (!file.name.match(/\.(jpg|jpeg|png)$/)) {
+        if (!file?.name.match(/\.(jpg|jpeg|png)$/)) {
             errors.file = 'Please select valid image.'
         }
 
@@ -57,8 +59,8 @@ const CreateNewPost = ({ fetchPosts }) => {
                     if (!res.data.error) {
                         seterrors({})
                         alert('Successfully created post');
-                        fetchPosts();
                         clearInputs();
+                        fetchPosts();
                     }
                 })
                 .catch((error) => {
@@ -100,6 +102,7 @@ const CreateNewPost = ({ fetchPosts }) => {
                         <div>Select image</div>
                         <div>
                             <input
+                                ref={fileRef}
                                 className=""
                                 type="file"
                                 name="file"
